@@ -160,6 +160,7 @@ details.out{margin-top:14px;background:var(--surface);border:1px solid var(--lin
 details.out summary{cursor:pointer;font-weight:600;font-size:13.5px}
 details.out ul{margin:9px 0 0;padding-left:18px;font-size:13px;color:var(--ink-2)}
 details.out li{margin-bottom:4px}
+body.hasback{padding-bottom:78px}   /* 돌아가기 버튼이 내용을 가리지 않게 */
 .backbtn{position:fixed;left:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:50;
   border:1px solid var(--accent);background:var(--accent);color:var(--surface);border-radius:999px;padding:10px 16px;
   font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.28);max-width:calc(100% - 32px);
@@ -1023,6 +1024,7 @@ TABS.forEach(function(t){
 });
 function setTab(k){
   tab=k;
+  if(k==='trap')qEl.value='';          /* 함정 탭은 검색어를 비우고 연다 */
   Array.prototype.forEach.call(tabsEl.children,function(b){
     var on=b.dataset.tab===k;b.setAttribute('aria-selected',on?'true':'false');
     if(on&&b.scrollIntoView)b.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
@@ -1054,16 +1056,10 @@ repBtn.addEventListener('click',function(){
 
 /* ── 관련 인물로 이동 ───────────────────────────── */
 var histStack=[];
-function reveal(id){
-  var el=cards[id];
-  if(el.hidden){              /* 현재 탭·필터에 걸려 있으면 필터를 풀고 보여 준다 */
-    qEl.value='';repOnly=false;repBtn.setAttribute('aria-pressed','false');setTab('all');
-  }
-  if(tab==='trap'){setTab('all');}
-  trapEl.hidden=true;listEl.hidden=false;
-  toggle(id,true);
-  el.scrollIntoView({behavior:'smooth',block:'start'});
-  el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');
+function tabName(k){return k==='all'?'전체':k==='trap'?'⚠️ 함정':UNITS[k];}
+function viewState(){return {id:currentAnchor(),tab:tab,q:qEl.value,rep:repOnly,y:window.scrollY||window.pageYOffset||0};}
+function setFilters(q,rep,k){
+  qEl.value=q;repOnly=rep;repBtn.setAttribute('aria-pressed',rep?'true':'false');setTab(k);
 }
 function currentAnchor(){
   var best=null,top=180;
@@ -1074,26 +1070,43 @@ function currentAnchor(){
   });
   return best;
 }
-function navTo(id,skipHist){
+function reveal(id){
+  var el=cards[id];
+  if(el.hidden)setFilters('',false,'all');   /* 그래도 가려져 있으면 전체 탭으로 푼다 */
+  toggle(id,true);
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+  el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');
+}
+function navTo(id){
   if(!cards[id])return;
-  if(!skipHist){var from=currentAnchor();if(from&&from!==id)histStack.push(from);}
+  histStack.push(viewState());
+  var p=BY[id];
+  /* 지금 탭이 그 인물의 단원이면 그대로 두고, 아니면 그 인물의 단원 탭으로 옮긴다 */
+  var to=(tab!=='trap'&&p.u.indexOf(tab)>=0)?tab:p.u[0];
+  setFilters('',false,to);
   reveal(id);drawBack();
+}
+function goBack(){
+  var st=histStack.pop();if(!st)return;
+  setFilters(st.q,st.rep,st.tab);
+  if(st.id&&cards[st.id]&&!cards[st.id].hidden)reveal(st.id);
+  else window.scrollTo({top:st.y,behavior:'smooth'});
+  drawBack();
 }
 function drawBack(){
+  document.body.classList.toggle('hasback',histStack.length>0);
   if(!histStack.length){backBtn.hidden=true;return;}
+  var st=histStack[histStack.length-1];
   backBtn.hidden=false;
-  backBtn.textContent='← 이전 인물로 · '+BY[histStack[histStack.length-1]].n;
+  backBtn.textContent='← 돌아가기 · '+(st.id?BY[st.id].n+' ('+tabName(st.tab)+')':tabName(st.tab));
 }
-backBtn.addEventListener('click',function(){
-  var id=histStack.pop();if(!id)return;
-  reveal(id);drawBack();
-});
+backBtn.addEventListener('click',goBack);
 
 /* ── 함정 탭 ───────────────────────────── */
 (function(){
   var h='<div class="trapbar"><button class="tb" type="button" id="showAll">전체 공개</button>'+
         '<button class="tb" type="button" id="hideAll">전체 가리기</button>'+
-        '<span class="hint">가려진 칸을 누르면 답이 나온다. 한 번 더 누르면 그 인물 카드로 간다.</span></div>'+
+        '<span class="hint">가려진 칸을 누르면 답이 나온다. 한 번 더 누르면 그 인물의 단원 탭으로 간다.</span></div>'+
         '<div class="list">';
   TRAPS.forEach(function(t){
     h+='<div class="trapcard"><h3>⚠️ '+t.t+'</h3><p class="tnote">'+t.note+'</p>';

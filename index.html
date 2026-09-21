@@ -1,0 +1,1124 @@
+<title>독립운동 인물 연결 카드</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Nanum+Myeongjo:wght@700;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#eceff4; --surface:#ffffff; --surface-2:#f5f8fb; --surface-3:#e9eef4;
+  --ink:#141d28; --ink-2:#3d4c5e; --muted:#69788b;
+  --line:#d8e0ea; --line-2:#bfcbda;
+  --accent:#12587e; --accent-soft:#e0edf5; --accent-ink:#0d4460;
+  --warn:#a83c12; --warn-soft:#fbe9df; --warn-line:#eec3ab;
+  --tip:#7a5800; --tip-soft:#faf0d4; --tip-line:#e8d197;
+  --lnk:#146b5c; --lnk-soft:#ddf0ea; --lnk-line:#a9d8cb;
+  --shadow:0 1px 2px rgba(18,32,48,.05),0 8px 20px rgba(18,32,48,.06);
+  --u-cross:#8a6200; --u-gaehang:#06706d; --u-colonial:#a22b33; --u-m1910:#7a3ba3;
+  --u-kpg:#1a5ea6; --u-manchuria:#1c7146; --u-uiyeol:#a42a6b; --u-singan:#8f5228;
+  --u-culture:#5b6a10; --u-mass:#4a4ab2; --u-unify:#4f5d6d; --u-trap:#b4441a;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e131a; --surface:#171e27; --surface-2:#1e2732; --surface-3:#252f3b;
+    --ink:#e7eef6; --ink-2:#bdc9d7; --muted:#8b9aab;
+    --line:#29333f; --line-2:#3a4655;
+    --accent:#7bb9e2; --accent-soft:#15303f; --accent-ink:#a5d3f2;
+    --warn:#f0906a; --warn-soft:#3a2118; --warn-line:#5d3423;
+    --tip:#e5bf66; --tip-soft:#352c13; --tip-line:#584821;
+    --lnk:#6fcbb6; --lnk-soft:#102e28; --lnk-line:#1e4b41;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 20px rgba(0,0,0,.28);
+    --u-cross:#dfb24e; --u-gaehang:#4ec8c2; --u-colonial:#f0888d; --u-m1910:#c69bea;
+    --u-kpg:#78b7f0; --u-manchuria:#6ecb9a; --u-uiyeol:#f088bd; --u-singan:#e0996b;
+    --u-culture:#b6c75a; --u-mass:#9d9cf0; --u-unify:#a3b2c3; --u-trap:#f5936a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e131a; --surface:#171e27; --surface-2:#1e2732; --surface-3:#252f3b;
+  --ink:#e7eef6; --ink-2:#bdc9d7; --muted:#8b9aab;
+  --line:#29333f; --line-2:#3a4655;
+  --accent:#7bb9e2; --accent-soft:#15303f; --accent-ink:#a5d3f2;
+  --warn:#f0906a; --warn-soft:#3a2118; --warn-line:#5d3423;
+  --tip:#e5bf66; --tip-soft:#352c13; --tip-line:#584821;
+  --lnk:#6fcbb6; --lnk-soft:#102e28; --lnk-line:#1e4b41;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 20px rgba(0,0,0,.28);
+  --u-cross:#dfb24e; --u-gaehang:#4ec8c2; --u-colonial:#f0888d; --u-m1910:#c69bea;
+  --u-kpg:#78b7f0; --u-manchuria:#6ecb9a; --u-uiyeol:#f088bd; --u-singan:#e0996b;
+  --u-culture:#b6c75a; --u-mass:#9d9cf0; --u-unify:#a3b2c3; --u-trap:#f5936a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  font-size:15px;line-height:1.72;-webkit-text-size-adjust:100%;
+  word-break:keep-all;overflow-wrap:anywhere;
+}
+.wrap{max-width:680px;margin:0 auto;padding-inline:16px}
+button{font:inherit;color:inherit}
+
+/* ── 상단 고정 ───────────────────────────── */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 6px 14px -12px rgba(0,0,0,.5)}
+.masthead{display:flex;align-items:baseline;gap:8px;padding-block:10px 6px}
+.masthead h1{margin:0;font-family:'Nanum Myeongjo',serif;font-weight:800;font-size:19px;letter-spacing:-.01em;line-height:1.3}
+.masthead .count{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);white-space:nowrap}
+.searchrow{display:flex;gap:8px;align-items:center;padding-bottom:8px}
+#q{flex:1;min-width:0;appearance:none;-webkit-appearance:none;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);
+  border-radius:10px;padding:9px 12px;font-size:15px;font-family:inherit}
+#q::placeholder{color:var(--muted)}
+#q:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.repbtn{flex:none;border:1px solid var(--line-2);background:var(--surface);border-radius:10px;padding:9px 11px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.repbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.tabscroll{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-inline:-16px;padding-inline:16px;padding-bottom:9px}
+.tabscroll::-webkit-scrollbar{display:none}
+.tabs{display:flex;gap:6px;width:max-content}
+.tab{flex:none;border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;color:var(--ink-2)}
+.tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--u,var(--muted));margin-right:6px;vertical-align:1px}
+.tab[aria-selected="true"]{background:var(--u,var(--accent));border-color:var(--u,var(--accent));color:var(--surface)}
+.tab[aria-selected="true"] .dot{background:var(--surface);opacity:.85}
+
+/* ── 카드 ───────────────────────────── */
+main{padding-block:14px 8px}
+.list{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--u,var(--muted));border-radius:12px;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:calc(env(safe-area-inset-top,0px) + 150px)}
+.card.flash{animation:flash 1.8s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 3px var(--u,var(--accent))}55%{box-shadow:0 0 0 3px var(--u,var(--accent))}100%{box-shadow:var(--shadow)}}
+@media (prefers-reduced-motion:reduce){.card.flash{animation:none;outline:3px solid var(--u,var(--accent));outline-offset:-1px}}
+.head{display:block;width:100%;text-align:left;background:none;border:0;padding:12px 13px;cursor:pointer}
+.head:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.nameline{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+.pname{margin:0;font-family:'Nanum Myeongjo',serif;font-weight:700;font-size:20px;line-height:1.35;letter-spacing:-.01em}
+.ho{font-family:'IBM Plex Sans KR',sans-serif;font-size:12px;font-weight:500;color:var(--muted)}
+.rep{font-size:12px;background:var(--accent-soft);color:var(--accent-ink);border-radius:999px;padding:1px 7px;font-weight:600}
+.unitpill{margin-left:auto;font-size:11px;font-weight:600;color:var(--u);border:1px solid var(--u);border-radius:999px;padding:1px 7px;opacity:.95}
+.flowline{display:flex;flex-wrap:wrap;align-items:center;gap:4px 3px;margin-top:8px}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;background:var(--surface-3);color:var(--ink-2);border-radius:6px;padding:2px 6px;white-space:nowrap}
+.chip b{font-weight:600;color:var(--u)}
+.arr{font-style:normal;color:var(--muted);font-size:11px;padding-inline:1px}
+.key{margin:8px 0 0;font-size:14px;color:var(--ink-2);line-height:1.6}
+.more{margin-top:8px;font-size:12px;color:var(--muted);font-weight:600}
+.head[aria-expanded="true"] .more::after{content:' ▲'}
+.head[aria-expanded="false"] .more::after{content:' ▼'}
+
+.body{padding:0 13px 14px;border-top:1px dashed var(--line);margin-top:0}
+.sec{margin-top:13px}
+.sech{font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--muted);margin:0 0 6px}
+.detail{margin:0;font-size:14.5px;line-height:1.78}
+.detail em{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--u);white-space:nowrap}
+.flowlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.flowlist li{display:flex;gap:8px;font-size:13.5px;color:var(--ink-2);align-items:baseline}
+.flowlist .pg{flex:none;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;color:var(--u);min-width:74px}
+.reltags{display:flex;flex-wrap:wrap;gap:6px}
+.reltag{display:flex;flex-direction:column;align-items:flex-start;gap:0;border:1px solid var(--line-2);background:var(--surface-2);border-radius:9px;padding:5px 9px;cursor:pointer;text-align:left;max-width:100%}
+.reltag:hover{border-color:var(--accent);background:var(--accent-soft)}
+.reltag .rn{font-size:13.5px;font-weight:600;line-height:1.35}
+.reltag .rw{font-size:11px;color:var(--muted);line-height:1.4}
+.reltag.dead{cursor:not-allowed;opacity:.65;background:var(--surface-3);border-style:dashed}
+.reltag.dead:hover{border-color:var(--line-2);background:var(--surface-3)}
+.reltag.dead .rn::after{content:' · 카드 없음';font-size:10px;font-weight:500;color:var(--muted)}
+.notes{display:flex;flex-direction:column;gap:7px}
+.note{border:1px solid;border-radius:9px;padding:8px 10px;font-size:13.5px;line-height:1.65}
+.note.lnk{background:var(--lnk-soft);border-color:var(--lnk-line);color:var(--ink)}
+.note.trap{background:var(--warn-soft);border-color:var(--warn-line);color:var(--ink)}
+.note.tip{background:var(--tip-soft);border-color:var(--tip-line);color:var(--ink)}
+.note .nh{font-weight:700;margin-right:4px}
+.note.lnk .nh{color:var(--lnk)}.note.trap .nh{color:var(--warn)}.note.tip .nh{color:var(--tip)}
+.graphbox{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:4px}
+.graphbox svg{display:block;width:100%;height:auto}
+.gnode{cursor:pointer}
+.gnode:focus-visible{outline:2px solid var(--accent)}
+.gnode .gbox{fill:var(--surface);stroke-width:1.5}
+.gnode:hover .gbox{fill:var(--accent-soft)}
+.gtext{font-family:'IBM Plex Sans KR',sans-serif;font-size:12px;font-weight:600;fill:var(--ink);dominant-baseline:central;text-anchor:middle}
+.gself .gbox{fill:var(--u);stroke:var(--u)}
+.gself .gtext{fill:var(--surface);font-family:'Nanum Myeongjo',serif;font-weight:700;font-size:13px}
+.gedge{stroke:var(--line-2);stroke-width:1.4}
+.glabel{font-family:'IBM Plex Sans KR',sans-serif;font-size:9.5px;fill:var(--muted);text-anchor:middle;dominant-baseline:central;
+  paint-order:stroke;stroke:var(--surface-2);stroke-width:3.5px;stroke-linejoin:round}
+.gdead .gbox{fill:var(--surface-3);stroke:var(--line-2);stroke-dasharray:3 3}
+.gdead .gtext{fill:var(--muted)}
+
+/* ── 함정 탭 ───────────────────────────── */
+.trapbar{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.trapbar .tb{border:1px solid var(--line-2);background:var(--surface);border-radius:9px;padding:7px 12px;font-size:13px;font-weight:600;cursor:pointer}
+.trapbar .hint{font-size:12px;color:var(--muted)}
+.trapcard{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--u-trap);border-radius:12px;box-shadow:var(--shadow);padding:13px}
+.trapcard h3{margin:0 0 4px;font-family:'Nanum Myeongjo',serif;font-size:17px;font-weight:700}
+.trapcard .tnote{margin:0 0 9px;font-size:12.5px;color:var(--muted)}
+.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:7px 0;border-top:1px dashed var(--line)}
+.qrow .qq{font-size:14px;flex:1 1 150px;min-width:0}
+.qrow .qsrc{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);flex:none}
+.ans{display:flex;flex-wrap:wrap;gap:5px}
+.mask{border:1px solid var(--line-2);background:var(--surface-3);border-radius:8px;padding:3px 10px;font-size:13.5px;font-weight:600;cursor:pointer;min-width:62px;text-align:center}
+.mask[data-on="0"]{color:transparent;text-shadow:none;background:repeating-linear-gradient(135deg,var(--surface-3),var(--surface-3) 5px,var(--line) 5px,var(--line) 6px)}
+.mask[data-on="1"]{background:var(--warn-soft);border-color:var(--warn-line);color:var(--ink)}
+.mask[data-on="1"].nav::after{content:' →';color:var(--warn);font-size:11px}
+
+/* ── 하단 ───────────────────────────── */
+.empty{text-align:center;color:var(--muted);font-size:14px;padding:40px 0}
+footer{margin-top:26px;border-top:1px solid var(--line);padding-block:16px 30px;font-size:13px;color:var(--ink-2)}
+footer h2{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--muted);margin:0 0 8px}
+.legend{display:flex;flex-direction:column;gap:4px;margin:0 0 18px;padding:0;list-style:none;font-size:13px}
+.legend b{font-weight:600}
+.src{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.7;color:var(--ink-2)}
+details.out{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+details.out summary{cursor:pointer;font-weight:600;font-size:13.5px}
+details.out ul{margin:9px 0 0;padding-left:18px;font-size:13px;color:var(--ink-2)}
+details.out li{margin-bottom:4px}
+.backbtn{position:fixed;left:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:50;
+  border:1px solid var(--accent);background:var(--accent);color:var(--surface);border-radius:999px;padding:10px 16px;
+  font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.28);max-width:calc(100% - 32px);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+</style>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="masthead">
+      <h1>독립운동 인물 연결 카드</h1>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="searchrow">
+      <input id="q" type="search" placeholder="이름 · 호 · 단체 · 사건으로 찾기" autocomplete="off" spellcheck="false">
+      <button class="repbtn" id="repToggle" type="button" aria-pressed="false">🔁만</button>
+    </div>
+    <div class="tabscroll"><div class="tabs" id="tabs" role="tablist"></div></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="list" id="list"></div>
+  <div id="trapview" hidden></div>
+  <p class="empty" id="empty" hidden>찾는 인물이 없다. 검색어나 단원 탭을 바꿔 보자.</p>
+</main>
+
+<footer class="wrap">
+  <h2>기호 범례</h2>
+  <ul class="legend">
+    <li><b>🔁</b> 두 교과서(또는 두 단원)에 다시 나오는 인물</li>
+    <li><b>👥</b> 관련 인물 — 함께 묶여 나오거나 사건으로 이어지는 사람</li>
+    <li><b>🔗</b> 연결 포인트 — 다른 쪽·다른 단원으로 이어지는 흐름</li>
+    <li><b>⚠️</b> 함정 — 이름이 비슷해 바꿔 내기 좋은 지점</li>
+    <li><b>💡</b> 한자 꿀팁 — 이름 뜻으로 외우는 법</li>
+  </ul>
+  <h2>출처</h2>
+  <p class="src">천재교과서(정요근), 『고등 한국사1』 Ⅲ-04(146~158쪽) = <b>한1</b><br>
+  천재교과서(정요근), 『고등 한국사2』 Ⅰ단원(10~64쪽) = <b>한2</b><br>
+  이 페이지의 모든 내용과 쪽수는 위 두 교과서의 학습 노트에서만 옮겼다.</p>
+  <details class="out">
+    <summary>뺀 인물 (한 번 나오는 단역)</summary>
+    <ul>
+      <li><b>기사·구술 속 개인</b> — 이완우, 윤영안·김사환(태형 기사), 오행석·김형석·김순덕(강제 동원 구술), 유봉영, 안용준</li>
+      <li><b>사진·사료 속 단역</b> — 서광범(최초 양복 착용), 조병식, 순헌 황귀비, 스페이에르·정교(절영도 사료), 시모무라 가이난</li>
+    </ul>
+  </details>
+</footer>
+
+<button class="backbtn" id="backbtn" type="button" hidden></button>
+
+<script>
+/* ============================================================
+   인물 데이터
+   id  : 카드 식별자
+   n   : 이름   ho : 호   u : 단원(여러 개 가능)   r : 🔁 여부
+   f   : 쪽수 흐름 [교재, 쪽, 짧은 내용]
+   k   : 핵심 한 줄        d : 상세 설명
+   rel : 관련 인물 [상대 id, 관계 이유]  ← 양방향으로 자동 연결됨
+   m   : 메모 [종류(lnk 🔗 / trap ⚠️ / tip 💡), 내용]
+   ============================================================ */
+const UNITS = {
+  cross:'두 교과서 관통', gaehang:'개항기', colonial:'식민 통치',
+  m1910:'1910년대·3·1 운동', kpg:'임시 정부', manchuria:'만주 무장 투쟁',
+  uiyeol:'의열 투쟁', singan:'1920년대·신간회', culture:'민족 문화',
+  mass:'대중 운동', unify:'1930년대 통합'
+};
+/* 카드가 없는 관련 인물 (회색 태그) */
+const NOCARD = { stalin:'스탈린' };
+
+const PEOPLE = [
+/* ── 1. 두 교과서를 관통하는 인물 ───────────────── */
+{id:'sinchaeho', n:'신채호', u:['cross'], r:1,
+ f:[['한1','p.157','영웅 전기와 〈독사신론〉'],['한2','p.30','〈대동단결 선언〉(1917)'],['한2','p.39','〈조선 혁명 선언〉(1923)'],['한2','p.56','《조선사 연구초》·《조선 상고사》']],
+ k:'역사 서술의 주체를 ‘민족’으로 세우고, 의열단의 활동 지침까지 쓴 사람이다.',
+ d:'《을지문덕전》과 《이순신전》 같은 영웅 전기를 쓰고 《이태리 건국 삼걸전》을 번역했다[한1 p.157]. 《대한매일신보》에 〈독사신론〉을 실어 역사 서술의 주체를 ‘민족’으로 세웠다[한1 p.157]. 1917년 〈대동단결 선언〉을 발표했고[한2 p.30], 1923년 〈조선 혁명 선언〉을 써서 의열단의 활동 지침이 됐다[한2 p.39]. 《조선사 연구초》와 《조선 상고사》를 썼고 "역사는 아와 비아의 투쟁"이라고 했다[한2 p.56].',
+ rel:[['parkeunsik','〈대동단결 선언〉을 함께 발표했다'],['singyusik','〈대동단결 선언〉을 함께 발표했다'],['kimwonbong','〈조선 혁명 선언〉을 요청한 사람이다'],['bethell','〈독사신론〉이 실린 《대한매일신보》의 발행인이다'],['yanggitak','《대한매일신보》를 함께 발간했다']],
+ m:[['lnk','한1 p.156 도입부에서 신채호·박은식·주시경 세 명이 ‘이달의 독립운동가’로 함께 나온다.'],
+    ['trap','‘혁명’이 들어간 이름 — 〈조선 혁명 선언〉은 신채호, 조선 혁명당은 국민부 계열(양세봉), 조선 민족 혁명당은 김원봉이다.']]},
+
+{id:'parkeunsik', n:'박은식', u:['cross'], r:1,
+ f:[['한1','p.157~158','근대 계몽 사학·〈유교 구신론〉'],['한2','p.30','〈대동단결 선언〉'],['한2','p.36','제2대 임시 대통령(1925)'],['한2','p.56','《한국통사》·《한국독립운동지혈사》']],
+ k:'"나라는 형체, 역사는 정신" — 탄핵된 이승만의 뒤를 이은 제2대 임시 대통령이다.',
+ d:'근대 계몽 사학을 발전시켰고, 〈유교 구신론〉으로 민중 중심의 유교 개혁을 주장했다[한1 p.157~158]. 〈대동단결 선언〉을 발표했고[한2 p.30], 1925년 제2대 임시 대통령이 됐다[한2 p.36]. 《한국통사》와 《한국독립운동지혈사》를 썼다. "나라는 형체, 역사는 정신"이라는 말이 핵심이다[한2 p.56].',
+ rel:[['syngman','탄핵된 전임 임시 대통령이다'],['sinchaeho','〈대동단결 선언〉을 함께 발표했다'],['singyusik','〈대동단결 선언〉을 함께 발표했다']],
+ m:[['lnk','한1 p.156 도입부에서 신채호·박은식·주시경 세 명이 ‘이달의 독립운동가’로 함께 나온다.']]},
+
+{id:'jusigyeong', n:'주시경', u:['cross'], r:1,
+ f:[['한1','p.157','국문 연구소(1907)'],['한2','p.54','제자들이 조선어 연구회(1921)를 만듦']],
+ k:'국문 연구소에서 국어 문법을 세웠고, 제자들이 조선어 연구회로 이었다.',
+ d:'국문 연구소(1907)에서 국어 문법 체계를 정리했다[한1 p.157]. 그의 제자들이 조선어 연구회(1921)를 만들었다[한2 p.54].',
+ rel:[['jiseokyeong','국문 연구소 동료다'],['choehyeonbae','제자 계열로 조선어 학회를 이끌었다'],['iyunjae','제자 계열로 조선어 학회를 이끌었다']],
+ m:[['lnk','한1 p.156 도입부에서 신채호·박은식·주시경 세 명이 ‘이달의 독립운동가’로 함께 나온다.']]},
+
+{id:'sonbyeonghui', n:'손병희', ho:'의암', u:['cross'], r:1,
+ f:[['한1','p.158','천도교로 개칭(1905)·《만세보》'],['한2','p.31','민족 대표 33인']],
+ k:'동학 제3대 교주에서 천도교로, 다시 3·1 운동의 민족 대표 33인으로 이어진다.',
+ d:'동학 제3대 교주로, 동학을 천도교로 바꾸고(1905) 《만세보》를 발간했다[한1 p.158]. 민족 대표 33인으로 3·1 운동을 주도했다[한2 p.31].',
+ rel:[['iseunghun','민족 대표 33인 동료다'],['hanyongun','민족 대표 33인 동료다'],['bangjeonghwan','같은 천도교 계열이고, 천도교 소년회로 이어진다']]},
+
+{id:'hanyongun', n:'한용운', u:['cross'], r:1,
+ f:[['한1','p.158','《조선 불교 유신론》'],['한2','p.31','민족 대표 33인'],['한2','p.60','사찰령 폐지 운동']],
+ k:'불교 개혁론에서 민족 대표 33인, 사찰령 폐지 운동까지 이어진다.',
+ d:'《조선 불교 유신론》을 썼다[한1 p.158]. 민족 대표 33인으로 참여했고[한2 p.31], 사찰령 폐지 운동을 이끌었다[한2 p.60].',
+ rel:[['sonbyeonghui','민족 대표 33인 동료다'],['iseunghun','민족 대표 33인 동료다']]},
+
+{id:'nacheol', n:'나철', u:['cross'], r:1,
+ f:[['한1','p.158','대종교 창시(1909)'],['한2','p.60','대종교가 중광단을 조직'],['한2','p.30','중광단이 북로 군정서로 발전'],['한2','p.37','북로 군정서가 청산리 대첩에서 싸움']],
+ k:'대종교 → 중광단 → 북로 군정서 → 청산리로 이어지는 계보의 출발점이다.',
+ d:'1909년 대종교를 창시했다[한1 p.158]. 대종교가 만주에서 중광단을 조직했고[한2 p.60], 중광단은 북로 군정서로 발전했다[한2 p.30]. 김좌진의 북로 군정서가 청산리 대첩에서 싸웠다[한2 p.37].',
+ rel:[['ogiho','대종교를 함께 창시했다'],['kimjwajin','대종교에서 북로 군정서로 이어지는 계보다']]},
+
+{id:'naseokju', n:'나석주', u:['cross','uiyeol'], r:1,
+ f:[['한1','p.147','동양 척식 주식회사 설명에서 의열단원으로 등장'],['한2','p.40','조선 식산 은행·동척에 폭탄(1926)']],
+ k:'한1의 동척 설명에서 이름이 먼저 나오고, 한2에서 그 동척에 폭탄을 던진다.',
+ d:'동양 척식 주식회사를 소개하면서 의열단원으로 처음 나온다[한1 p.147]. 1926년 조선 식산 은행과 동양 척식 주식회사에 폭탄을 던졌다[한2 p.40].',
+ rel:[['kimwonbong','의열단 단장이다'],['bakjaehyeok','의열단 의거 동료다(연도순 1920)'],['kimiksang','의열단 의거 동료다(연도순 1921)'],['kimsangok','의열단 의거 동료다(연도순 1923)'],['kimjiseop','의열단 의거 동료다(연도순 1924)']],
+ m:[['lnk','동척의 흐름 — 1908년 설립[한1 p.147] → 토지 조사 사업으로 늘어난 국유지를 넘겨받음[한2 p.20] → 나석주 의거[한2 p.40].']]},
+
+{id:'gojong', n:'고종', u:['cross'], r:1,
+ f:[['한1','p.152·155','정관헌의 커피·한성 전기 회사(1898)'],['한2','p.30','임병찬에게 비밀 칙령'],['한2','p.31','1919년 1월 사망, 장례식에 맞춰 3·1 운동']],
+ k:'근대 문물의 자리에도, 비밀 결사의 뒤에도, 3·1 운동의 계기에도 있다.',
+ d:'정관헌에서 커피를 즐겼고, 황실이 한성 전기 회사(1898)를 세웠다[한1 p.152·155]. 임병찬에게 비밀 칙령을 내렸다[한2 p.30]. 1919년 1월에 갑자기 사망했고, 장례식에 맞춰 3·1 운동이 계획됐다[한2 p.31].',
+ rel:[['imbyeongchan','비밀 칙령을 받아 독립 의군부를 만들었다'],['sunjong','장례 짝꿍이다']],
+ m:[['lnk','장례 짝꿍 — 고종 장례는 3·1 운동으로, 순종 장례(1926)는 6·10 만세 운동으로 이어졌다[한2 p.44].']]},
+
+/* ── 2. 개항기 경제·사회·문화 (한1) ───────────────── */
+{id:'megata', n:'메가타', u:['gaehang'],
+ f:[['한1','p.148','재정 고문·화폐 정리 사업(1905)']],
+ k:'제1차 한일 협약으로 온 재정 고문이자 화폐 정리 사업의 집행자다.',
+ d:'제1차 한일 협약으로 파견된 재정 고문이다. 화폐 정리 사업(1905)으로 상평통보와 백동화를 일본 제일은행권으로 바꿨다[한1 p.148].'},
+
+{id:'gimgwangje', n:'김광제', u:['gaehang'],
+ f:[['한1','p.151','대구에서 국채 보상 운동']],
+ k:'서상돈과 함께 대구에서 국채 보상 운동을 이끌었다.',
+ d:'대구에서 국채 보상 운동을 이끈 두 주역 중 한 명이다[한1 p.151].',
+ rel:[['seosangdon','국채 보상 운동을 함께 이끈 한 세트다'],['yanggitak','국채 보상 성금을 모으다 구속된 《대한매일신보》 발간인이다']]},
+
+{id:'seosangdon', n:'서상돈', u:['gaehang'],
+ f:[['한1','p.151','대구에서 국채 보상 운동']],
+ k:'김광제와 함께 대구에서 국채 보상 운동을 이끌었다.',
+ d:'대구에서 국채 보상 운동을 이끈 두 주역 중 한 명이다[한1 p.151].',
+ rel:[['yanggitak','국채 보상 성금을 모으다 구속된 《대한매일신보》 발간인이다']]},
+
+{id:'yanggitak', n:'양기탁', u:['gaehang'],
+ f:[['한1','p.151','국채 보상 성금 모금 중 구속'],['한1','p.154','베델과 《대한매일신보》 발간(1904)']],
+ k:'《대한매일신보》를 함께 만들고, 국채 보상 성금 때문에 누명을 썼다.',
+ d:'베델과 함께 《대한매일신보》(1904)를 발간했다[한1 p.154]. 국채 보상 성금을 모으다가 일제가 씌운 누명으로 구속됐다[한1 p.151, 154].',
+ rel:[['bethell','《대한매일신보》를 함께 발간했다']]},
+
+{id:'bethell', n:'베델', u:['gaehang'],
+ f:[['한1','p.154','《대한매일신보》 발행인']],
+ k:'영국 국적이라 항일 기사를 실을 수 있었던 《대한매일신보》 발행인이다.',
+ d:'영국인으로, 《대한매일신보》 발행인이다. 일본과 동맹 관계인 영국 국적이라 항일 기사를 실을 수 있었다[한1 p.154].'},
+
+{id:'seojaepil', n:'서재필', u:['gaehang'],
+ f:[['한1','p.154','《독립신문》 발간']],
+ k:'아관 파천 이후 최초의 민간 신문이자 순한글 신문인 《독립신문》을 냈다.',
+ d:'아관 파천 이후 《독립신문》을 발간했다. 최초의 민간 신문이자 순한글 신문이고, 영문판도 냈다[한1 p.154].',
+ m:[['trap','《독립신문》은 두 개다 — 서재필의 《독립신문》[한1 p.154]과 임시 정부 기관지 《독립신문》[한2 p.35].']]},
+
+{id:'allen', n:'알렌', u:['gaehang'],
+ f:[['한1','p.152','건의로 광혜원(제중원, 1885) 설립']],
+ k:'그의 건의로 최초의 서양식 병원 광혜원이 세워졌다.',
+ d:'선교사로, 그의 건의로 최초의 서양식 병원인 광혜원(제중원, 1885)이 세워졌다[한1 p.152].'},
+
+{id:'bakesther', n:'박에스더', u:['gaehang'],
+ f:[['한1','p.156','최초의 여의사·보구녀관 진료']],
+ k:'한국 최초의 여의사로 보구녀관에서 진료했다.',
+ d:'한국 최초의 여의사로, 보구녀관에서 진료했다[한1 p.156].'},
+
+{id:'bakseongchun', n:'박성춘', u:['gaehang'],
+ f:[['한1','p.156','관민 공동회 연설(1898)']],
+ k:'백정 출신으로 관민 공동회에서 연설했다.',
+ d:'백정 출신으로 관민 공동회에서 연설했다(1898)[한1 p.156].',
+ rel:[['ihakchan','백정 차별 문제가 형평 운동으로 이어진다']],
+ m:[['lnk','신분제가 폐지된 뒤에도 백정 차별은 남았고, 이는 형평 운동(1923, 이학찬)으로 이어진다[한2 p.59].']]},
+
+{id:'jiseokyeong', n:'지석영', u:['gaehang'],
+ f:[['한1','p.157','국문 연구소 활동·종두법 도입']],
+ k:'국문 연구소에서 활동했고 종두법을 들여왔다.',
+ d:'국문 연구소에서 활동했고, 종두법을 들여왔다[한1 p.157].'},
+
+{id:'iinjik', n:'이인직', u:['gaehang'],
+ f:[['한1','p.157','신소설 《혈의 누》']],
+ k:'신소설 《혈의 누》를 썼다.',
+ d:'《혈의 누》를 쓴 신소설 작가다[한1 p.157].',
+ rel:[['anguksun','신소설 짝이다'],['choenamseon','한1 p.157의 근대 문학 묶음이다']]},
+
+{id:'anguksun', n:'안국선', u:['gaehang'],
+ f:[['한1','p.157','신소설 《금수회의록》']],
+ k:'신소설 《금수회의록》을 썼다.',
+ d:'《금수회의록》을 쓴 신소설 작가다[한1 p.157].',
+ rel:[['choenamseon','한1 p.157의 근대 문학 묶음이다']],
+ m:[['tip','금수(禽獸)는 날짐승과 길짐승이다. 동물 8마리가 인간 사회를 풍자하는 소설이다.']]},
+
+{id:'choenamseon', n:'최남선', u:['gaehang'],
+ f:[['한1','p.157','신체시 〈해에게서 소년에게〉']],
+ k:'신체시 〈해에게서 소년에게〉를 썼다.',
+ d:'〈해에게서 소년에게〉는 신체시다[한1 p.157].'},
+
+{id:'ogiho', n:'오기호', u:['gaehang'],
+ f:[['한1','p.158','나철과 대종교 창시']],
+ k:'나철과 함께 대종교를 창시했다.',
+ d:'나철과 함께 대종교를 창시했다[한1 p.158].'},
+
+/* ── 3. 식민 통치·수탈 (한2 Ⅰ-01·02) ───────────────── */
+{id:'iwanyong', n:'이완용', u:['colonial'], r:1,
+ f:[['한2','p.11','중추원에 참여한 친일파'],['한2','p.14','사망 때 《동아일보》 비판 사설이 검열로 삭제']],
+ k:'중추원 친일파이자, 그의 사망 기사에서 검열의 실물을 보여 준다.',
+ d:'중추원에 참여한 친일파다[한2 p.11]. 이완용이 사망했을 때 《동아일보》의 비판 사설은 검열로 삭제됐다[한2 p.14].',
+ rel:[['songbyeongjun','중추원에 참여한 친일파 짝이다']]},
+
+{id:'songbyeongjun', n:'송병준', u:['colonial'],
+ f:[['한2','p.11','중추원에 참여한 친일파']],
+ k:'중추원에 참여한 친일파다.',
+ d:'중추원에 참여한 친일파다[한2 p.11].'},
+
+{id:'wilson', n:'윌슨', u:['colonial'],
+ f:[['한2','p.13','14개조 평화 원칙(1918)']],
+ k:'민족 자결주의를 담은 14개조 평화 원칙을 발표한 미국 대통령이다.',
+ d:'미국 대통령으로, 민족 자결주의를 담은 14개조 평화 원칙(1918)을 발표했다[한2 p.13].',
+ rel:[['lenin','민족 자결을 밝힌 선언의 짝이다']],
+ m:[['lnk','윌슨과 레닌은 짝으로 나온다. 두 사람의 선언이 약소민족에게 희망을 주면서 3·1 운동의 배경이 됐다[한2 p.31].']]},
+
+{id:'lenin', n:'레닌', u:['colonial'],
+ f:[['한2','p.13','민족 자결 원칙을 밝힘']],
+ k:'러시아 혁명의 지도자로 민족 자결 원칙을 밝혔다.',
+ d:'러시아 혁명의 지도자로, 민족 자결 원칙을 밝혔다[한2 p.13].',
+ m:[['lnk','윌슨과 레닌은 짝으로 나온다. 두 사람의 선언이 약소민족에게 희망을 주면서 3·1 운동의 배경이 됐다[한2 p.31].']]},
+
+{id:'saito', n:'사이토 마코토', u:['colonial'],
+ f:[['한2','p.14','문관도 총독이 될 수 있게 바꿈'],['한2','p.15','문화 정치 관제 개정 취지 발표(1919)']],
+ k:'‘일시동인’을 내건 문화 정치의 얼굴이자, 문관 총독 함정의 주인공이다.',
+ d:'조선 총독으로, 문화 정치의 관제 개정 취지를 발표했다(1919). 핵심 표현은 ‘일시동인’이다[한2 p.15].',
+ rel:[['gangugyu','1919년 총독 폭탄 의거의 표적이다']],
+ m:[['trap','문관도 총독이 될 수 있게 바꿨지만, 문관 총독은 끝까지 한 명도 없었다[한2 p.14].'],
+    ['lnk','강우규가 폭탄을 던진 1919년의 조선 총독이 바로 이 사람이다[한2 p.15].']]},
+
+{id:'yeomsangseop', n:'염상섭', u:['colonial'],
+ f:[['한2','p.12','소설 〈만세전〉(1922)']],
+ k:'소설 〈만세전〉으로 무단 통치기의 현실을 그렸다.',
+ d:'소설 〈만세전〉(1922)으로 무단 통치기 현실을 그렸다[한2 p.12].'},
+
+{id:'noguchi', n:'노구치 시타가우', u:['colonial'],
+ f:[['한2','p.24','조선 질소 비료 공장(1927)·흥남 읍장']],
+ k:'흥남에 공장을 세우고 읍장까지 맡아 자본과 권력의 유착을 보여 줬다.',
+ d:'흥남에 조선 질소 비료 공장(1927)을 세웠고, 흥남 읍장까지 맡아 자본과 권력의 유착을 보여 줬다[한2 p.24].',
+ rel:[['ibukmyeong','그 공장의 노동자 출신 작가다']]},
+
+{id:'ibukmyeong', n:'이북명', u:['colonial'],
+ f:[['한2','p.25','소설 《질소 비료 공장》(1932)']],
+ k:'조선 질소 비료 공장 노동자 출신 작가다.',
+ d:'노구치가 세운 공장의 노동자 출신 작가로, 소설 《질소 비료 공장》(1932)을 썼다[한2 p.25].'},
+
+/* ── 4. 1910년대 민족 운동·3·1 운동 ───────────────── */
+{id:'ihoeyeong', n:'이회영', u:['m1910'],
+ f:[['한2','p.30','삼원보에 경학사·신흥 강습소']],
+ k:'신민회 회원으로, 6형제가 전 재산을 팔아 삼원보에 터를 닦았다.',
+ d:'신민회 회원이다. 6형제가 전 재산을 팔아 삼원보에 경학사와 신흥 강습소를 세웠다[한2 p.30].',
+ rel:[['isangryong','신민회 동료로 경학사를 함께 조직했다']],
+ m:[['tip','경학사(耕學社)는 밭 갈며(耕) 배운다(學)는 뜻이다.']]},
+
+{id:'isangryong', n:'이상룡', u:['m1910'],
+ f:[['한2','p.30','경학사를 함께 조직']],
+ k:'신민회 동료로 경학사를 함께 조직했다.',
+ d:'신민회 동료로, 이회영과 함께 경학사를 조직했다[한2 p.30].'},
+
+{id:'isangseol', n:'이상설', u:['m1910'],
+ f:[['한2','p.30','연해주 권업회 → 대한 광복군 정부']],
+ k:'연해주에서 권업회를 거쳐 대한 광복군 정부를 세웠다.',
+ d:'연해주에서 권업회를 거쳐 대한 광복군 정부를 세웠다[한2 p.30].',
+ rel:[['idongnyeong','연해주에서 대한 광복군 정부를 함께 세웠다']]},
+
+{id:'idongnyeong', n:'이동녕', u:['m1910'],
+ f:[['한2','p.30','연해주 권업회 → 대한 광복군 정부']],
+ k:'연해주에서 권업회를 거쳐 대한 광복군 정부를 세웠다.',
+ d:'연해주에서 권업회를 거쳐 대한 광복군 정부를 세웠다[한2 p.30].'},
+
+{id:'bagyongman', n:'박용만', u:['m1910'], r:1,
+ f:[['한2','p.30','하와이 대조선 국민 군단'],['한2','p.36','이승만의 위임 통치 청원을 비판']],
+ k:'하와이에서 대조선 국민 군단을 만들었고, 뒤에 위임 통치 청원을 비판했다.',
+ d:'하와이에서 대조선 국민 군단을 만들었다[한2 p.30]. 나중에 이승만의 위임 통치 청원을 비판했다[한2 p.36].',
+ rel:[['syngman','위임 통치 청원을 비판한 상대다']]},
+
+{id:'singyusik', n:'신규식', u:['m1910'],
+ f:[['한2','p.30','〈대동단결 선언〉 발표'],['한2','p.34','선언이 안창호의 유품에서 발견됨']],
+ k:'박은식·신채호와 함께 〈대동단결 선언〉을 발표했다.',
+ d:'박은식·신채호와 함께 〈대동단결 선언〉을 발표했다[한2 p.30].',
+ rel:[['anchangho','〈대동단결 선언〉이 그의 유품에서 발견됐다']],
+ m:[['lnk','이 선언은 안창호의 유품에서 발견됐다[한2 p.34].']]},
+
+{id:'imbyeongchan', n:'임병찬', u:['m1910'],
+ f:[['한2','p.30','독립 의군부·복벽주의']],
+ k:'독립 의군부를 만들었고 복벽주의를 추구했다.',
+ d:'국내 비밀 결사인 독립 의군부를 만들었고, 복벽주의를 추구했다[한2 p.30].',
+ rel:[['baksangjin','국내 비밀 결사의 대비 짝이다(복벽주의 ↔ 공화제)']],
+ m:[['tip','복벽(復辟)은 임금(辟)을 다시(復) 세운다는 뜻이다.']]},
+
+{id:'baksangjin', n:'박상진', u:['m1910'],
+ f:[['한2','p.30','대한 광복회·공화제']],
+ k:'대한 광복회를 만들었고 공화제를 목표로 했다.',
+ d:'국내 비밀 결사인 대한 광복회를 만들었고, 공화제를 목표로 했다[한2 p.30].'},
+
+{id:'gimgyusik', n:'김규식', u:['m1910'], r:1,
+ f:[['한2','p.31','신한 청년당 대표로 파리 강화 회의'],['한2','p.35','임시 정부 전권 대사·구미 위원장']],
+ k:'신한 청년당이 파리 강화 회의에 보낸 대표이자, 임시 정부의 외교 담당이다.',
+ d:'신한 청년당이 파리 강화 회의에 대표로 보냈다[한2 p.31]. 임시 정부 전권 대사와 구미 위원장을 맡았다[한2 p.35].',
+ rel:[['syngman','달러 표시 독립 공채에 둘이 함께 서명했다']]},
+
+{id:'iseunghun', n:'이승훈', u:['m1910'],
+ f:[['한2','p.31','민족 대표 33인']],
+ k:'민족 대표 33인 중 한 명이다.',
+ d:'민족 대표 33인 중 한 명이다[한2 p.31].'},
+
+{id:'yugwansun', n:'유관순', u:['m1910'],
+ f:[['한2','p.32','고향으로 내려가 시위 주도']],
+ k:'서울에서 시위를 경험한 뒤 고향으로 내려가 시위를 주도했다.',
+ d:'서울에서 시위를 경험한 뒤 고향으로 내려가 시위를 주도했다[한2 p.32].'},
+
+{id:'scofield', n:'프랭크 스코필드', u:['m1910'],
+ f:[['한2','p.32','제암리·고주리 학살 폭로']],
+ k:'캐나다인 선교사로 제암리·고주리 학살을 폭로했다.',
+ d:'캐나다인 선교사로, 제암리·고주리 학살을 폭로했다[한2 p.32].',
+ rel:[['martin','만행을 알린 외국인 세트다(간도 참변)'],['shaw','만행을 알린 외국인 세트다(교통국)'],['bethell','만행을 알린 외국인 세트다(한1의 《대한매일신보》)']],
+ m:[['lnk','‘만행을 알린 외국인’ 세트 — 스코필드(제암리), 스탠리 마틴(간도 참변), 조지 루이스 쇼(교통국), 베델(한1)[한2 p.32].']]},
+
+/* ── 5. 대한민국 임시 정부 ───────────────── */
+{id:'syngman', n:'이승만', u:['kpg'],
+ f:[['한2','p.34~36','임시 대통령·위임 통치 청원·탄핵(1925)'],['한2','p.35','달러 표시 독립 공채에 서명']],
+ k:'임시 대통령이었지만 위임 통치 청원으로 문제가 됐고 결국 탄핵됐다.',
+ d:'임시 대통령이다. 위임 통치 청원서로 문제가 됐고, 결국 탄핵됐다(1925)[한2 p.34~36]. 독립운동 3노선에서는 외교 운동론을 폈다[한2 p.36].',
+ rel:[['idonghwi','국무총리로 노선이 대립했다'],['parkeunsik','탄핵 뒤를 이은 제2대 대통령이다']],
+ m:[['lnk','독립운동 3노선 — 이동휘는 무장 투쟁론, 이승만은 외교 운동론, 안창호는 실력 양성론이다[한2 p.36].']]},
+
+{id:'idonghwi', n:'이동휘', u:['kpg'],
+ f:[['한2','p.36','임시 정부 국무총리·무장 투쟁론'],['한2','p.41','한인 사회당(1918)']],
+ k:'국무총리이자, 한국인이 세운 최초의 사회주의 정당을 만든 사람이다.',
+ d:'임시 정부 국무총리다. 한인 사회당(1918)을 만들었는데, 한국인이 세운 최초의 사회주의 정당이다[한2 p.41].',
+ m:[['lnk','독립운동 3노선 — 이동휘는 무장 투쟁론, 이승만은 외교 운동론, 안창호는 실력 양성론이다[한2 p.36].']]},
+
+{id:'anchangho', n:'안창호', u:['kpg'],
+ f:[['한2','p.36','독립운동 3노선 중 실력 양성론'],['한2','p.38','민족 유일당 건설 제창']],
+ k:'실력 양성론을 폈고 민족 유일당 건설을 제창했다.',
+ d:'실력 양성론을 폈고, 민족 유일당 건설을 제창했다[한2 p.38].',
+ m:[['lnk','독립운동 3노선 — 이동휘는 무장 투쟁론, 이승만은 외교 운동론, 안창호는 실력 양성론이다[한2 p.36].']]},
+
+{id:'isiyeong', n:'이시영', u:['kpg'],
+ f:[['한2','p.35','초대 재무총장·원화 표시 공채의 직인']],
+ k:'초대 재무총장으로, 원화 표시 공채에 그의 직인이 찍혀 있다.',
+ d:'초대 재무총장으로, 원화 표시 공채에 그의 직인이 찍혀 있다[한2 p.35].'},
+
+{id:'shaw', n:'조지 루이스 쇼', u:['kpg'],
+ f:[['한2','p.35','이륭 양행이 교통국 역할']],
+ k:'그가 세운 이륭 양행이 비밀리에 교통국 역할을 했다.',
+ d:'그가 세운 이륭 양행이 비밀리에 교통국 역할을 했다[한2 p.35].'},
+
+/* ── 6. 만주 무장 투쟁 ───────────────── */
+{id:'hongbeomdo', n:'홍범도', u:['manchuria'],
+ f:[['한2','p.37','봉오동 전투(1920.6)·청산리 연합 참여·유해 봉환(2021)']],
+ k:'봉오동에서 이기고 청산리에 연합 부대로 참여했으며, 대한 독립군을 이끌었다.',
+ d:'봉오동 전투(1920.6)에서 승리했고, 청산리 대첩에 연합 부대로 참여했다. 1937년 스탈린에 의해 카자흐스탄으로 강제 이주됐고, 유해는 2021년에 봉환됐다[한2 p.37].',
+ rel:[['kimjwajin','청산리 대첩에 연합 부대로 함께했다'],['stalin','1937년 강제 이주를 결정한 사람이다']],
+ m:[['trap','군대 이름 함정 — 대한 독립군은 홍범도, 대한 독립 군단은 서일이다.']]},
+
+{id:'kimjwajin', n:'김좌진', u:['manchuria'],
+ f:[['한2','p.37','북로 군정서·청산리 대첩(1920.10)']],
+ k:'북로 군정서를 이끌고 청산리 대첩에서 승리했다.',
+ d:'북로 군정서를 이끌고 청산리 대첩(1920.10)에서 승리했다[한2 p.37].',
+ rel:[['seoil','대한 독립 군단으로 이어진다'],['ibeomseok','청산리 대첩 회고록을 남긴 사람이다']]},
+
+{id:'seoil', n:'서일', u:['manchuria'],
+ f:[['한2','p.38','대한 독립 군단 총재']],
+ k:'대한 독립 군단의 총재다.',
+ d:'대한 독립 군단의 총재다[한2 p.38].',
+ m:[['trap','군대 이름 함정 — 대한 독립 군단은 서일, 대한 독립군은 홍범도다.']]},
+
+{id:'ibeomseok', n:'이범석', u:['manchuria'],
+ f:[['한2','p.37','청산리 대첩 회고록 《우둥불》']],
+ k:'청산리 대첩 회고록 《우둥불》을 썼다.',
+ d:'청산리 대첩 회고록 《우둥불》을 썼다[한2 p.37].'},
+
+{id:'martin', n:'스탠리 마틴', u:['manchuria'],
+ f:[['한2','p.38','간도 참변을 국제 사회에 폭로']],
+ k:'간도 참변을 국제 사회에 폭로했다.',
+ d:'간도 참변을 국제 사회에 폭로했다[한2 p.38].'},
+
+{id:'jicheongcheon', n:'지청천', u:['manchuria','unify'],
+ f:[['한2','p.38','한국 독립군'],['한2','p.63','쌍성보·대전자령 승리'],['한2','p.64','조선 민족 혁명당 참여 후 탈당 → 한국광복군 총사령관']],
+ k:'이 범위에서 가장 많이 옮겨 다니는 인물이다. 만주에서 충칭까지 이어진다.',
+ d:'한국 독립군을 이끌었다[한2 p.38]. 쌍성보·대전자령에서 승리했고[한2 p.63], 조선 민족 혁명당에 참여했다가 탈당한 뒤 한국광복군 총사령관이 됐다[한2 p.64].',
+ rel:[['yangsebong','남만주 짝이다'],['kimwonbong','당 주도권을 두고 갈등했다'],['josoang','동지다'],['kimgu','동지다']],
+ m:[['trap','군대 이름 함정 — 한국 독립군은 지청천, 조선 혁명군은 양세봉이다.'],
+    ['trap','한국 독립당은 세 번 나온다 — 지청천(만주)[한2 p.38], 조소앙 연표의 1930년[한2 p.64], 1940년 김구·조소앙·지청천[한2 p.64].'],
+    ['tip','외우는 법 — 지청천은 ‘쌍대’(쌍성보·대전자령), 양세봉은 ‘영흥’(영릉가·흥경성)이다.']]},
+
+{id:'yangsebong', n:'양세봉', u:['manchuria'],
+ f:[['한2','p.63','조선 혁명군·영릉가·흥경성 전투 승리']],
+ k:'조선 혁명군을 이끌고 영릉가·흥경성 전투에서 승리했다.',
+ d:'조선 혁명군을 이끌고 영릉가·흥경성 전투에서 승리했다[한2 p.63].',
+ m:[['trap','‘혁명’이 들어간 이름 함정 — 조선 혁명군과 조선 혁명당은 국민부 계열(양세봉), 조선 민족 혁명당은 김원봉, 〈조선 혁명 선언〉은 신채호다.'],
+    ['tip','외우는 법 — 양세봉은 ‘영흥’(영릉가·흥경성), 지청천은 ‘쌍대’(쌍성보·대전자령)이다.']]},
+
+{id:'kimilsung', n:'김일성', u:['manchuria'],
+ f:[['한2','p.63','보천보 전투(1937) 신문 호외']],
+ k:'보천보 전투를 보도한 신문 호외에 이름이 나온다.',
+ d:'보천보 전투(1937)를 보도한 신문 호외에 이름이 나온다[한2 p.63].'},
+
+/* ── 7. 의열 투쟁 ───────────────── */
+{id:'kimwonbong', n:'김원봉', u:['uiyeol','unify'],
+ f:[['한2','p.39','의열단 조직(1919)'],['한2','p.64','조선 민족 혁명당(1935)·조선 의용대(1938) → 임시 정부 합류']],
+ k:'의열단에서 조선 민족 혁명당, 조선 의용대를 거쳐 임시 정부로 합류했다.',
+ d:'의열단을 조직했다(1919)[한2 p.39]. 이후 조선 민족 혁명당(1935), 조선 의용대(1938)를 거쳐 임시 정부에 합류했다[한2 p.64].',
+ rel:[['sinchaeho','〈조선 혁명 선언〉을 요청해 활동 지침으로 삼았다'],['josoang','조선 민족 혁명당을 탈당한 사람이다'],['jicheongcheon','당 주도권을 두고 갈등했다'],['bakjaehyeok','의열단원이다(부산서, 1920)'],['kimiksang','의열단원이다(총독부, 1921)'],['kimsangok','의열단원이다(종로서, 1923)'],['kimjiseop','의열단원이다(일본 왕궁, 1924)'],['naseokju','의열단원이다(동척, 1926)']],
+ m:[['trap','‘혁명’이 들어간 이름 함정 — 조선 민족 혁명당은 김원봉, 조선 혁명당은 국민부 계열(양세봉), 〈조선 혁명 선언〉은 신채호다.'],
+    ['trap','군대 이름 함정 — 조선 의용대는 김원봉이다.']]},
+
+{id:'bakjaehyeok', n:'박재혁', u:['uiyeol'],
+ f:[['한2','p.39~40','부산 경찰서 의거(1920)']],
+ k:'의열단원으로 부산 경찰서에 의거했다(1920).',
+ d:'의열단원이다. 연도순 의거 다섯 중 첫 번째로 부산 경찰서를 공격했다(1920)[한2 p.39~40].',
+ rel:[['kimiksang','의열단 의거 동료다(연도순 1921)'],['kimsangok','의열단 의거 동료다(연도순 1923)'],['kimjiseop','의열단 의거 동료다(연도순 1924)']]},
+
+{id:'kimiksang', n:'김익상', u:['uiyeol'],
+ f:[['한2','p.39~40','조선 총독부 의거(1921)']],
+ k:'의열단원으로 조선 총독부에 의거했다(1921).',
+ d:'의열단원이다. 연도순 의거 다섯 중 두 번째로 조선 총독부를 공격했다(1921)[한2 p.39~40].',
+ rel:[['kimsangok','의열단 의거 동료다(연도순 1923)'],['kimjiseop','의열단 의거 동료다(연도순 1924)']]},
+
+{id:'kimsangok', n:'김상옥', u:['uiyeol'],
+ f:[['한2','p.39~40','종로 경찰서 의거(1923)']],
+ k:'의열단원으로 종로 경찰서에 의거했다(1923).',
+ d:'의열단원이다. 연도순 의거 다섯 중 세 번째로 종로 경찰서를 공격했다(1923)[한2 p.39~40].',
+ rel:[['kimjiseop','의열단 의거 동료다(연도순 1924)']]},
+
+{id:'kimjiseop', n:'김지섭', u:['uiyeol'],
+ f:[['한2','p.39~40','일본 왕궁 의거(1924)']],
+ k:'의열단원으로 일본 왕궁에 의거했다(1924).',
+ d:'의열단원이다. 연도순 의거 다섯 중 네 번째로 일본 왕궁을 공격했다(1924)[한2 p.39~40].'},
+
+{id:'ibongchang', n:'이봉창', u:['uiyeol'],
+ f:[['한2','p.39~40','도쿄 일왕 의거(1932)']],
+ k:'한인 애국단원으로 도쿄에서 일왕에게 의거했다(1932).',
+ d:'한인 애국단원이다. 도쿄에서 일왕에게 의거했다(1932)[한2 p.39~40].',
+ rel:[['kimgu','한인 애국단을 조직한 사람이다'],['yunbonggil','한인 애국단 두 명 중 한 명이다']]},
+
+{id:'yunbonggil', n:'윤봉길', u:['uiyeol'],
+ f:[['한2','p.39~40','훙커우 공원 의거(1932)']],
+ k:'훙커우 공원 의거로 중국 국민당 정부의 지원을 끌어냈다.',
+ d:'한인 애국단원이다. 훙커우 공원에서 의거했다(1932)[한2 p.39~40].',
+ rel:[['kimgu','의거 날 아침 회중시계를 맞바꿨다[한2 p.39]']],
+ m:[['lnk','윤봉길 의거를 계기로 중국 국민당 정부가 한국 독립운동을 적극 지원했다[한2 p.39].']]},
+
+{id:'gangugyu', n:'강우규', u:['uiyeol'],
+ f:[['한2','p.39~40','조선 총독 폭탄 의거(1919)']],
+ k:'의열단이 아닌 개인 의거다. 1919년 조선 총독에게 폭탄을 던졌다.',
+ d:'개인 의거로 조선 총독에게 폭탄을 던졌다(1919)[한2 p.39~40].',
+ rel:[['namjahyeon','의열단이 아닌 개인 의거 세 명 중 한 명이다'],['jomyeongha','의열단이 아닌 개인 의거 세 명 중 한 명이다']],
+ m:[['trap','강우규·남자현·조명하 세 명은 의열단이 아니다. 단골 함정이다!'],
+    ['lnk','강우규가 폭탄을 던진 1919년의 조선 총독은 사이토 마코토다[한2 p.15].']]},
+
+{id:'namjahyeon', n:'남자현', u:['uiyeol'],
+ f:[['한2','p.39~40','조선 총독 암살 계획(1924)']],
+ k:'의열단이 아닌 개인 의거다. 1924년 총독 암살을 계획했다.',
+ d:'개인 의거로 조선 총독 암살을 계획했다(1924)[한2 p.39~40].',
+ rel:[['jomyeongha','의열단이 아닌 개인 의거 세 명 중 한 명이다']],
+ m:[['trap','강우규·남자현·조명하 세 명은 의열단이 아니다. 단골 함정이다!']]},
+
+{id:'jomyeongha', n:'조명하', u:['uiyeol'],
+ f:[['한2','p.39~40','타이중 의거(1928)']],
+ k:'의열단이 아닌 개인 의거다. 1928년 타이중에서 의거했다.',
+ d:'개인 의거로 타이중에서 의거했다(1928)[한2 p.39~40].',
+ m:[['trap','강우규·남자현·조명하 세 명은 의열단이 아니다. 단골 함정이다!']]},
+
+{id:'kimgu', n:'김구', u:['uiyeol','unify'],
+ f:[['한2','p.39','한인 애국단 조직(1931)'],['한2','p.64','한국 독립당(1940) → 충칭 임시 정부 주석']],
+ k:'한인 애국단으로 의열 투쟁을 열고, 충칭 임시 정부의 주석이 됐다.',
+ d:'한인 애국단(1931)을 조직했다[한2 p.39]. 한국 독립당(1940)을 거쳐 충칭 임시 정부의 주석이 됐다[한2 p.64].',
+ rel:[['josoang','한국 독립당(1940)을 함께 만든 동지다']],
+ m:[['lnk','윤봉길 의거를 계기로 중국 국민당 정부가 한국 독립운동을 적극 지원했다[한2 p.39].'],
+    ['trap','한국 독립당은 세 번 나온다 — 지청천(만주)[한2 p.38], 조소앙 연표의 1930년[한2 p.64], 1940년 김구·조소앙·지청천[한2 p.64].']]},
+
+/* ── 8. 1920년대 국내 운동·신간회 ───────────────── */
+{id:'jomansik', n:'조만식', u:['singan'],
+ f:[['한2','p.42~45','조선 물산 장려회 조직(1920)']],
+ k:'평양에서 조선 물산 장려회를 조직했다.',
+ d:'평양에서 조선 물산 장려회를 조직했다(1920)[한2 p.42~45].'},
+
+{id:'isangjae', n:'이상재', u:['singan'], r:1,
+ f:[['한2','p.42','민립 대학 설립 운동'],['한2','p.45','신간회 회장']],
+ k:'민립 대학 설립 운동을 이끌었고 신간회 회장이 됐다.',
+ d:'민립 대학 설립 운동을 이끌었고[한2 p.42], 신간회 회장이 됐다[한2 p.45].',
+ rel:[['hongmyeonghui','신간회 부회장이다']]},
+
+{id:'hongmyeonghui', n:'홍명희', u:['singan'],
+ f:[['한2','p.45','신간회 부회장']],
+ k:'신간회 부회장이다.',
+ d:'신간회 부회장이다[한2 p.45].'},
+
+{id:'igwangsu', n:'이광수', u:['singan'],
+ f:[['한2','p.43','〈민족적 경륜〉(1924)·자치 운동']],
+ k:'〈민족적 경륜〉으로 자치 운동을 주장한 타협적 민족주의 세력이다.',
+ d:'〈민족적 경륜〉(1924)으로 자치 운동을 주장했다. 김성수·최린과 함께 타협적 민족주의 세력이다[한2 p.43].',
+ rel:[['gimseongsu','타협적 민족주의 세력으로 함께 묶인다'],['choerin','타협적 민족주의 세력으로 함께 묶인다']],
+ m:[['lnk','신간회 강령의 "기회주의를 일체 부인함"은 이들을 겨냥한 것이다[한2 p.45].']]},
+
+{id:'gimseongsu', n:'김성수', u:['singan'],
+ f:[['한2','p.43','타협적 민족주의 세력']],
+ k:'이광수·최린과 함께 타협적 민족주의 세력이다.',
+ d:'이광수·최린과 함께 타협적 민족주의 세력이다[한2 p.43].',
+ rel:[['choerin','타협적 민족주의 세력으로 함께 묶인다']],
+ m:[['lnk','신간회 강령의 "기회주의를 일체 부인함"은 이들을 겨냥한 것이다[한2 p.45].']]},
+
+{id:'choerin', n:'최린', u:['singan'],
+ f:[['한2','p.43','타협적 민족주의 세력']],
+ k:'이광수·김성수와 함께 타협적 민족주의 세력이다.',
+ d:'이광수·김성수와 함께 타협적 민족주의 세력이다[한2 p.43].',
+ m:[['lnk','신간회 강령의 "기회주의를 일체 부인함"은 이들을 겨냥한 것이다[한2 p.45].']]},
+
+{id:'sunjong', n:'순종', u:['singan'],
+ f:[['한2','p.44','1926년 사망, 장례일에 6·10 만세 운동']],
+ k:'1926년에 사망했고, 장례일에 6·10 만세 운동이 일어났다.',
+ d:'1926년에 사망했고, 장례일에 6·10 만세 운동이 일어났다[한2 p.44].',
+ m:[['lnk','장례 짝꿍 — 고종 장례는 3·1 운동, 순종 장례(1926)는 6·10 만세 운동으로 이어졌다[한2 p.44].']]},
+
+/* ── 9. 민족 문화 수호 ───────────────── */
+{id:'choehyeonbae', n:'최현배', u:['culture'],
+ f:[['한2','p.54~57','조선어 학회(1931)·조선어 학회 사건(1942)']],
+ k:'조선어 학회를 이끌었고 조선어 학회 사건으로 탄압받았다.',
+ d:'조선어 학회(1931)를 이끌었고, 조선어 학회 사건(1942)으로 탄압받았다[한2 p.54~57].',
+ rel:[['iyunjae','조선어 학회를 함께 이끌었다']]},
+
+{id:'iyunjae', n:'이윤재', u:['culture'],
+ f:[['한2','p.54~57','조선어 학회·진단 학회 창립(1934) 참여']],
+ k:'조선어 학회를 이끌었고, 진단 학회 창립에도 참여했다.',
+ d:'조선어 학회(1931)를 이끌었고, 조선어 학회 사건(1942)으로 탄압받았다[한2 p.54~57].',
+ rel:[['ibyeongdo','진단 학회로 연결된다']],
+ m:[['lnk','이윤재는 진단 학회 창립(1934)에도 참여했다. 진단 학회는 이병도와 연결된다[한2 p.56].']]},
+
+{id:'jeonhyeongpil', n:'전형필', ho:'간송', u:['culture'],
+ f:[['한2','p.55','보화각(1938)·《훈민정음》 해례본 수집']],
+ k:'최초의 사설 박물관 보화각을 세우고 《훈민정음》 해례본을 수집했다.',
+ d:'최초의 사설 박물관인 보화각(1938)을 세우고 《훈민정음》 해례본을 수집했다[한2 p.55].',
+ m:[['lnk','해례본이 발견되면서 가갸날이 광복 후 10월 9일 한글날로 바뀌었다[한2 p.54].']]},
+
+{id:'jeonginbo', n:'정인보', u:['culture'],
+ f:[['한2','p.56','조선학 운동·《여유당전서》 간행']],
+ k:'조선학 운동을 벌이고 《여유당전서》를 간행했다.',
+ d:'조선학 운동을 벌이고 《여유당전서》를 간행했다[한2 p.56].',
+ rel:[['anjaehong','조선학 운동을 함께 벌였다']]},
+
+{id:'anjaehong', n:'안재홍', u:['culture'],
+ f:[['한2','p.56','조선학 운동·《여유당전서》 간행']],
+ k:'조선학 운동을 벌이고 《여유당전서》를 간행했다.',
+ d:'조선학 운동을 벌이고 《여유당전서》를 간행했다[한2 p.56].'},
+
+{id:'baknamun', n:'백남운', u:['culture'],
+ f:[['한2','p.56','사회 경제 사학·정체성론 비판']],
+ k:'유물 사관에 입각해 정체성론을 비판한 사회 경제 사학자다.',
+ d:'사회 경제 사학자로, 유물 사관에 입각해 정체성론을 비판했다[한2 p.56].'},
+
+{id:'ibyeongdo', n:'이병도', u:['culture'],
+ f:[['한2','p.56','실증 사학·진단 학회 조직']],
+ k:'실증 사학자로 진단 학회를 조직했다.',
+ d:'실증 사학자로, 진단 학회를 조직했다[한2 p.56].'},
+
+{id:'isanghwa', n:'이상화', u:['culture'],
+ f:[['한2','p.54~57','저항 문학(1926)']],
+ k:'저항 문학을 쓴 문인이다(1926).',
+ d:'이상화(1926), 심훈(1930), 이육사는 저항 문학이고, 노천명(1942)은 친일 문학이다[한2 p.54~57].',
+ rel:[['simhun','저항 문학 문인 묶음이다'],['iyuksa','저항 문학 문인 묶음이다'],['nocheonmyeong','같은 문인 묶음이지만 친일 문학으로 갈린다']]},
+
+{id:'simhun', n:'심훈', u:['culture'],
+ f:[['한2','p.54~57','저항 문학(1930)']],
+ k:'저항 문학을 쓴 문인이다(1930).',
+ d:'이상화(1926), 심훈(1930), 이육사는 저항 문학이고, 노천명(1942)은 친일 문학이다[한2 p.54~57].',
+ rel:[['iyuksa','저항 문학 문인 묶음이다'],['nocheonmyeong','같은 문인 묶음이지만 친일 문학으로 갈린다']]},
+
+{id:'iyuksa', n:'이육사', u:['culture'],
+ f:[['한2','p.54~57','저항 문학']],
+ k:'저항 문학을 쓴 문인이다.',
+ d:'이상화(1926), 심훈(1930), 이육사는 저항 문학이고, 노천명(1942)은 친일 문학이다[한2 p.54~57].',
+ rel:[['nocheonmyeong','같은 문인 묶음이지만 친일 문학으로 갈린다']]},
+
+{id:'nocheonmyeong', n:'노천명', u:['culture'],
+ f:[['한2','p.54~57','친일 문학(1942)']],
+ k:'문인 묶음에서 혼자 친일 문학으로 갈린다(1942).',
+ d:'이상화(1926), 심훈(1930), 이육사는 저항 문학이고, 노천명(1942)은 친일 문학이다[한2 p.54~57].',
+ m:[['lnk','노천명이 시를 발표한 《매일신보》는 총독부 기관지다[한2 p.12].']]},
+
+/* ── 10. 대중 운동 ───────────────── */
+{id:'gangjuryong', n:'강주룡', u:['mass'],
+ f:[['한2','p.58~62','평원 고무 공장 파업·을밀대 고공 농성(1931)']],
+ k:'을밀대에서 한국 최초의 고공 농성을 벌였다.',
+ d:'평원 고무 공장 파업을 주도하며 을밀대에서 한국 최초의 고공 농성을 벌였다(1931)[한2 p.58~62].'},
+
+{id:'munjaecheol', n:'문재철', u:['mass'],
+ f:[['한2','p.61','암태도 소작 쟁의의 상대 지주']],
+ k:'암태도 소작 쟁의에서 농민들과 맞선 상대 지주다.',
+ d:'암태도 소작 쟁의에서 농민들과 맞선 상대 지주다[한2 p.61].'},
+
+{id:'bangjeonghwan', n:'방정환', u:['mass'],
+ f:[['한2','p.59','천도교 소년회·‘어린이’라는 말 제안']],
+ k:'천도교 소년회를 이끌며 ‘어린이’라는 말을 제안했다.',
+ d:'천도교 소년회를 이끌며 ‘어린이’라는 말을 제안했다[한2 p.59].'},
+
+{id:'ihakchan', n:'이학찬', u:['mass'],
+ f:[['한2','p.59','조선 형평사(1923)의 중심 인물']],
+ k:'조선 형평사의 중심 인물이다.',
+ d:'조선 형평사(1923)의 중심 인물이다[한2 p.59].',
+ m:[['lnk','한1 p.156의 박성춘과 연결된다. 신분제가 폐지된 뒤에도 남은 백정 차별이 형평 운동으로 이어졌다.'],
+    ['tip','형평(衡平)은 저울(衡)처럼 평평(平)하다는 뜻이다.']]},
+
+{id:'bakjungbin', n:'박중빈', u:['mass'],
+ f:[['한2','p.60','원불교 창시·새생활 운동']],
+ k:'원불교를 창시하고 새생활 운동을 펼쳤다.',
+ d:'원불교를 창시하고 새생활 운동을 펼쳤다[한2 p.60].'},
+
+{id:'gimhwallan', n:'김활란', u:['mass'],
+ f:[['한2','p.60','근우회 결성(1927)']],
+ k:'허정숙과 함께 근우회를 결성했다.',
+ d:'허정숙과 함께 근우회(1927)를 결성했다[한2 p.60].',
+ rel:[['heojeongsuk','근우회를 함께 결성했다']],
+ m:[['lnk','근우회는 신간회의 여성판이다[한2 p.60].'],
+    ['tip','근우(槿友)는 무궁화(槿)의 벗(友)이라는 뜻이다.']]},
+
+{id:'heojeongsuk', n:'허정숙', u:['mass'],
+ f:[['한2','p.60','근우회 결성(1927)']],
+ k:'김활란과 함께 근우회를 결성했다.',
+ d:'김활란과 함께 근우회(1927)를 결성했다[한2 p.60].',
+ m:[['lnk','근우회는 신간회의 여성판이다[한2 p.60].']]},
+
+{id:'nahyeseok', n:'나혜석', u:['mass'],
+ f:[['한2','p.62','〈이혼 고백서〉']],
+ k:'신여성으로 〈이혼 고백서〉를 썼다.',
+ d:'신여성으로 〈이혼 고백서〉를 썼다[한2 p.62].',
+ rel:[['gimiryeop','신여성으로 함께 나온다'],['chamirisa','신여성으로 함께 나온다'],['ganghyangran','신여성으로 함께 나온다']]},
+
+{id:'gimiryeop', n:'김일엽', u:['mass'],
+ f:[['한2','p.62','신여성']],
+ k:'신여성으로 나온다.',
+ d:'나혜석·차미리사·강향란과 함께 신여성으로 나온다[한2 p.62].',
+ rel:[['chamirisa','신여성으로 함께 나온다'],['ganghyangran','신여성으로 함께 나온다']]},
+
+{id:'chamirisa', n:'차미리사', u:['mass'],
+ f:[['한2','p.62','조선 여자 교육회']],
+ k:'신여성으로 조선 여자 교육회를 이끌었다.',
+ d:'신여성으로 조선 여자 교육회를 이끌었다[한2 p.62].',
+ rel:[['ganghyangran','신여성으로 함께 나온다']]},
+
+{id:'ganghyangran', n:'강향란', u:['mass'],
+ f:[['한2','p.62','최초의 단발 여성']],
+ k:'최초의 단발 여성이다.',
+ d:'신여성으로, 최초의 단발 여성이다[한2 p.62].'},
+
+/* ── 11. 1930년대 이후 통합 ───────────────── */
+{id:'josoang', n:'조소앙', u:['unify'],
+ f:[['한2','p.64','조선 민족 혁명당 참여 후 탈당·한국 독립당(1940)·외무부장']],
+ k:'조선 민족 혁명당을 탈당하고 한국 독립당을 결성해 임시 정부 외무부장을 맡았다.',
+ d:'조선 민족 혁명당에 참여했다가 탈당하고, 한국 독립당(1940)을 결성했다. 임시 정부에서 외무부장을 맡았다[한2 p.64].',
+ m:[['trap','한국 독립당은 세 번 나온다 — 지청천(만주)[한2 p.38], 조소앙 연표의 1930년[한2 p.64], 1940년 김구·조소앙·지청천[한2 p.64].']]}
+];
+
+/* ============================================================
+   ⚠️ 함정 문제 — [자료]의 ⚠️ 항목을 모았다
+   ============================================================ */
+const TRAPS = [
+ {t:'군대 이름', note:'이름이 한 글자씩 다르다. 지휘관으로 구분한다.', rows:[
+   {q:'대한 독립군', a:[['hongbeomdo','홍범도']], s:'한2 p.37'},
+   {q:'대한 독립 군단', a:[['seoil','서일']], s:'한2 p.38'},
+   {q:'한국 독립군', a:[['jicheongcheon','지청천']], s:'한2 p.38'},
+   {q:'조선 혁명군', a:[['yangsebong','양세봉']], s:'한2 p.63'},
+   {q:'조선 의용대', a:[['kimwonbong','김원봉']], s:'한2 p.64'}]},
+ {t:'‘혁명’이 들어간 이름', note:'선언인지, 당인지, 앞에 ‘민족’이 붙는지를 본다.', rows:[
+   {q:'조선 혁명 선언', a:[['sinchaeho','신채호']], s:'한2 p.39'},
+   {q:'조선 혁명당', a:[['yangsebong','국민부 계열(양세봉)']], s:'한2 p.63'},
+   {q:'조선 민족 혁명당', a:[['kimwonbong','김원봉']], s:'한2 p.64'}]},
+ {t:'한국 독립당은 세 번 나온다', note:'쪽과 연도로 구분한다.', rows:[
+   {q:'p.38 — 만주', a:[['jicheongcheon','지청천']], s:'한2 p.38'},
+   {q:'p.64 — 연표의 1930년', a:[['josoang','조소앙']], s:'한2 p.64'},
+   {q:'p.64 — 1940년', a:[['kimgu','김구'],['josoang','조소앙'],['jicheongcheon','지청천']], s:'한2 p.64'}]},
+ {t:'의열단이 아닌 3명', note:'단골 함정이다! 개인 의거로 묶인다.', rows:[
+   {q:'총독 폭탄(1919)', a:[['gangugyu','강우규']], s:'한2 p.39~40'},
+   {q:'총독 암살 계획(1924)', a:[['namjahyeon','남자현']], s:'한2 p.39~40'},
+   {q:'타이중 의거(1928)', a:[['jomyeongha','조명하']], s:'한2 p.39~40'}]},
+ {t:'《독립신문》 두 개', note:'같은 이름, 다른 신문이다.', rows:[
+   {q:'최초의 민간 신문·순한글 신문', a:[['seojaepil','서재필']], s:'한1 p.154'},
+   {q:'임시 정부 기관지', a:[[null,'임시 정부 기관지 《독립신문》']], s:'한2 p.35'}]},
+ {t:'문관 총독', note:'‘가능해졌다’와 ‘실제로 있었다’는 다르다.', rows:[
+   {q:'문관도 총독이 될 수 있게 관제를 바꾼 총독', a:[['saito','사이토 마코토']], s:'한2 p.15'},
+   {q:'실제로 임명된 문관 총독 수', a:[[null,'끝까지 한 명도 없었다']], s:'한2 p.14'}]}
+];
+</script>
+
+<script>
+(function(){
+'use strict';
+/* 단원별 색을 카드/탭에 연결 */
+var st=document.createElement('style');
+st.textContent=Object.keys(UNITS).map(function(k){return '.u-'+k+'{--u:var(--u-'+k+')}';}).join('')+'.u-all{--u:var(--accent)}.u-trap{--u:var(--u-trap)}';
+document.head.appendChild(st);
+
+var BY={};PEOPLE.forEach(function(p){BY[p.id]=p;});
+
+/* 관계 양방향화 — 명시된 이유가 있으면 그것을 쓰고, 없으면 반대쪽 이유를 빌려온다 */
+var REL={};PEOPLE.forEach(function(p){REL[p.id]=new Map();});
+PEOPLE.forEach(function(p){(p.rel||[]).forEach(function(r){REL[p.id].set(r[0],r[1]);});});
+PEOPLE.forEach(function(p){(p.rel||[]).forEach(function(r){
+  var o=r[0];if(!REL[o])return;                 /* 카드 없는 인물은 역방향 없음 */
+  if(!REL[o].has(p.id))REL[o].set(p.id,r[1]);
+});});
+function relsOf(id){
+  var out=[];REL[id].forEach(function(why,oid){
+    var t=BY[oid];
+    out.push({id:oid,name:t?t.n:(NOCARD[oid]||oid),why:why,unit:t?t.u[0]:null,dead:!t});
+  });
+  return out;
+}
+function mark(s){return s.replace(/\[([^\]]+)\]/g,'<em>[$1]</em>');}
+function short(s,max){var t=s.replace(/\[[^\]]*\]/g,'').replace(/\(.*?\)/g,'').replace(/^[〈《'‘]/,'').trim();return t.length>max?t.slice(0,max-1)+'…':t;}
+var NH={lnk:'🔗',trap:'⚠️',tip:'💡'};
+
+/* ── 미니 관계도 ───────────────────────────── */
+function graph(p,rs){
+  var n=rs.length;if(!n)return '';
+  var W=320,H=n<=2?196:n<=4?252:n<=6?292:322,cx=W/2,cy=H/2;
+  var lmax=10;
+  var box=function(name){var f=name.length>5?11:12.5;return{w:Math.max(48,name.length*f*0.98+14),h:25,f:f};};
+  var maxHalf=0;rs.forEach(function(r){maxHalf=Math.max(maxHalf,box(r.name).w/2);});
+  var rx=Math.max(66,Math.min(116,cx-maxHalf-3)),ry=H/2-32;
+  var sb=box(p.n);sb.w+=8;
+  var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+p.n+'의 관계도">';
+  var nodes=rs.map(function(r,i){
+    var ang=(-90+i*360/n)*Math.PI/180,b=box(r.name);
+    var x=cx+Math.cos(ang)*rx,y=cy+Math.sin(ang)*ry;
+    x=Math.max(b.w/2+2,Math.min(W-b.w/2-2,x));
+    y=Math.max(b.h/2+2,Math.min(H-b.h/2-2,y));
+    return{r:r,x:x,y:y,b:b};
+  });
+  nodes.forEach(function(nd){
+    svg+='<line class="gedge" x1="'+cx+'" y1="'+cy+'" x2="'+nd.x.toFixed(1)+'" y2="'+nd.y.toFixed(1)+'"/>';
+  });
+  nodes.forEach(function(nd){
+    var dx=nd.x-cx,dy=nd.y-cy,L=Math.sqrt(dx*dx+dy*dy);if(L<1)return;
+    var ux=dx/L,uy=dy/L;
+    var edge=function(hw,hh){
+      var a=Math.abs(ux)<1e-6?1e9:hw/Math.abs(ux),b=Math.abs(uy)<1e-6?1e9:hh/Math.abs(uy);
+      return Math.min(a,b);
+    };
+    var d0=edge(sb.w/2,14),d1=edge(nd.b.w/2,nd.b.h/2),run=L-d0-d1;
+    if(run<26)return;                                   /* 선이 짧으면 라벨을 접는다 */
+    var rmid=d0+run/2;
+    var arc=n<2?1e9:2*rmid*Math.sin(Math.PI/n)*0.9;     /* 옆 라벨과 부딪히지 않을 폭 */
+    var max=Math.floor(Math.min(run-10,arc)/9.7);
+    if(max<2)return;
+    var lx=cx+ux*rmid,ly=cy+uy*rmid;
+    svg+='<text class="glabel" x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'">'+short(nd.r.why,Math.min(max,lmax))+'</text>';
+  });
+  svg+='<g class="gself"><rect class="gbox" x="'+(cx-sb.w/2)+'" y="'+(cy-14)+'" width="'+sb.w+'" height="28" rx="8"/>'+
+       '<text class="gtext" x="'+cx+'" y="'+cy+'">'+p.n+'</text></g>';
+  nodes.forEach(function(nd){
+    var cls='gnode'+(nd.r.dead?' gdead':''),col=nd.r.unit?'var(--u-'+nd.r.unit+')':'var(--line-2)';
+    svg+='<g class="'+cls+'"'+(nd.r.dead?'':' data-go="'+nd.r.id+'" tabindex="0" role="button"')+'>'+
+      '<title>'+nd.r.name+' — '+nd.r.why.replace(/\[[^\]]*\]/g,'')+'</title>'+
+      '<rect class="gbox" x="'+(nd.x-nd.b.w/2).toFixed(1)+'" y="'+(nd.y-nd.b.h/2).toFixed(1)+'" width="'+nd.b.w.toFixed(1)+'" height="'+nd.b.h+'" rx="7" style="stroke:'+col+'"/>'+
+      '<text class="gtext" x="'+nd.x.toFixed(1)+'" y="'+nd.y.toFixed(1)+'" style="font-size:'+nd.b.f+'px">'+nd.r.name+'</text></g>';
+  });
+  return svg+'</svg>';
+}
+
+/* ── 카드 ───────────────────────────── */
+function chips(f){
+  var prev='';
+  return f.map(function(x){
+    var b=(x[0]===prev)?'':'<b>'+x[0]+'</b> ';prev=x[0];
+    return '<span class="chip">'+b+x[1]+'</span>';
+  }).join('<i class="arr">→</i>');
+}
+function cardHTML(p){
+  var u=p.u[0];
+  var units=p.u.map(function(k){return UNITS[k];}).join(' · ');
+  return '<button class="head" type="button" aria-expanded="false" aria-controls="b-'+p.id+'">'+
+      '<div class="nameline"><h3 class="pname">'+p.n+'</h3>'+
+      (p.ho?'<span class="ho">호 '+p.ho+'</span>':'')+
+      (p.r?'<span class="rep">🔁</span>':'')+
+      '<span class="unitpill">'+units+'</span></div>'+
+      '<div class="flowline">'+chips(p.f)+'</div>'+
+      '<p class="key">'+p.k+'</p><div class="more">펼치기</div>'+
+    '</button>'+
+    '<div class="body" id="b-'+p.id+'" hidden></div>';
+}
+function bodyHTML(p){
+  var h='<div class="sec"><h4 class="sech">상세 설명</h4><p class="detail">'+mark(p.d)+'</p></div>';
+  h+='<div class="sec"><h4 class="sech">쪽수 흐름</h4><ul class="flowlist">'+
+     p.f.map(function(x){return '<li><span class="pg">'+x[0]+' '+x[1]+'</span><span>'+x[2]+'</span></li>';}).join('')+
+     '</ul></div>';
+  var rs=relsOf(p.id);
+  if(rs.length){
+    h+='<div class="sec"><h4 class="sech">👥 관련 인물</h4><div class="reltags">'+
+      rs.map(function(r){
+        return '<button type="button" class="reltag'+(r.dead?' dead':'')+'"'+(r.dead?' disabled aria-disabled="true"':' data-go="'+r.id+'"')+'>'+
+          '<span class="rn">'+r.name+'</span><span class="rw">'+r.why.replace(/\[([^\]]+)\]/g,'· $1')+'</span></button>';
+      }).join('')+'</div></div>';
+  }
+  if(p.m&&p.m.length){
+    h+='<div class="sec"><h4 class="sech">메모</h4><div class="notes">'+
+      p.m.map(function(m){return '<div class="note '+m[0]+'"><span class="nh">'+NH[m[0]]+'</span>'+mark(m[1])+'</div>';}).join('')+
+      '</div></div>';
+  }
+  if(rs.length){h+='<div class="sec"><h4 class="sech">미니 관계도</h4><div class="graphbox">'+graph(p,rs)+'</div></div>';}
+  return h;
+}
+
+var listEl=document.getElementById('list'),trapEl=document.getElementById('trapview'),
+    emptyEl=document.getElementById('empty'),countEl=document.getElementById('count'),
+    qEl=document.getElementById('q'),repBtn=document.getElementById('repToggle'),
+    tabsEl=document.getElementById('tabs'),backBtn=document.getElementById('backbtn');
+
+var cards={};
+PEOPLE.forEach(function(p){
+  var el=document.createElement('article');
+  el.className='card u-'+p.u[0];el.id='p-'+p.id;
+  el.setAttribute('data-units',p.u.join(' '));
+  el.setAttribute('data-rep',p.r?'1':'0');
+  el.setAttribute('data-text',[p.n,p.ho||'',p.k,p.d,p.f.map(function(x){return x[0]+x[1]+x[2];}).join(' '),
+    (p.m||[]).map(function(m){return m[1];}).join(' '),p.u.map(function(k){return UNITS[k];}).join(' ')].join(' ').toLowerCase());
+  el.innerHTML=cardHTML(p);
+  listEl.appendChild(el);cards[p.id]=el;
+});
+
+function toggle(id,force){
+  var el=cards[id],head=el.querySelector('.head'),body=el.querySelector('.body');
+  var open=head.getAttribute('aria-expanded')==='true';
+  var next=(force===undefined)?!open:force;
+  if(next&&!body.dataset.built){body.innerHTML=bodyHTML(BY[id]);body.dataset.built='1';}
+  head.setAttribute('aria-expanded',next?'true':'false');
+  body.hidden=!next;
+  head.querySelector('.more').firstChild.nodeValue=next?'접기':'펼치기';
+}
+listEl.addEventListener('click',function(e){
+  var go=e.target.closest('[data-go]');
+  if(go){navTo(go.getAttribute('data-go'));return;}
+  var head=e.target.closest('.head');
+  if(head)toggle(head.closest('.card').id.slice(2));
+});
+listEl.addEventListener('keydown',function(e){
+  if(e.key!=='Enter'&&e.key!==' ')return;
+  var go=e.target.closest('g[data-go]');
+  if(go){e.preventDefault();navTo(go.getAttribute('data-go'));}
+});
+
+/* ── 탭·검색·필터 ───────────────────────────── */
+var TABS=[['all','전체']].concat(Object.keys(UNITS).map(function(k){return [k,UNITS[k]];})).concat([['trap','⚠️ 함정']]);
+var tab='all',repOnly=false;
+TABS.forEach(function(t){
+  var b=document.createElement('button');
+  b.type='button';b.className='tab u-'+(t[0]==='all'?'all':t[0]);b.setAttribute('role','tab');
+  b.setAttribute('aria-selected',t[0]===tab?'true':'false');b.dataset.tab=t[0];
+  b.innerHTML='<i class="dot"></i>'+t[1];
+  b.addEventListener('click',function(){setTab(t[0]);});
+  tabsEl.appendChild(b);
+});
+function setTab(k){
+  tab=k;
+  Array.prototype.forEach.call(tabsEl.children,function(b){
+    var on=b.dataset.tab===k;b.setAttribute('aria-selected',on?'true':'false');
+    if(on&&b.scrollIntoView)b.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+  });
+  apply();
+}
+function apply(){
+  var q=qEl.value.trim().toLowerCase();
+  if(tab==='trap'&&!q){
+    listEl.hidden=true;emptyEl.hidden=true;trapEl.hidden=false;
+    countEl.textContent='함정 '+TRAPS.length+'묶음';
+    return;
+  }
+  if(tab==='trap'&&q)setTab('all');
+  trapEl.hidden=true;listEl.hidden=false;
+  var shown=0;
+  PEOPLE.forEach(function(p){
+    var el=cards[p.id];
+    var ok=(tab==='all'||p.u.indexOf(tab)>=0)&&(!repOnly||p.r)&&(!q||el.getAttribute('data-text').indexOf(q)>=0);
+    el.hidden=!ok;if(ok)shown++;
+  });
+  emptyEl.hidden=shown>0;
+  countEl.textContent='인물 '+shown+' / '+PEOPLE.length+'명';
+}
+qEl.addEventListener('input',apply);
+repBtn.addEventListener('click',function(){
+  repOnly=!repOnly;repBtn.setAttribute('aria-pressed',repOnly?'true':'false');apply();
+});
+
+/* ── 관련 인물로 이동 ───────────────────────────── */
+var histStack=[];
+function reveal(id){
+  var el=cards[id];
+  if(el.hidden){              /* 현재 탭·필터에 걸려 있으면 필터를 풀고 보여 준다 */
+    qEl.value='';repOnly=false;repBtn.setAttribute('aria-pressed','false');setTab('all');
+  }
+  if(tab==='trap'){setTab('all');}
+  trapEl.hidden=true;listEl.hidden=false;
+  toggle(id,true);
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+  el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');
+}
+function currentAnchor(){
+  var best=null,top=180;
+  PEOPLE.forEach(function(p){
+    var el=cards[p.id];if(el.hidden)return;
+    var r=el.getBoundingClientRect();
+    if(r.top<=top&&r.bottom>top)best=p.id;
+  });
+  return best;
+}
+function navTo(id,skipHist){
+  if(!cards[id])return;
+  if(!skipHist){var from=currentAnchor();if(from&&from!==id)histStack.push(from);}
+  reveal(id);drawBack();
+}
+function drawBack(){
+  if(!histStack.length){backBtn.hidden=true;return;}
+  backBtn.hidden=false;
+  backBtn.textContent='← 이전 인물로 · '+BY[histStack[histStack.length-1]].n;
+}
+backBtn.addEventListener('click',function(){
+  var id=histStack.pop();if(!id)return;
+  reveal(id);drawBack();
+});
+
+/* ── 함정 탭 ───────────────────────────── */
+(function(){
+  var h='<div class="trapbar"><button class="tb" type="button" id="showAll">전체 공개</button>'+
+        '<button class="tb" type="button" id="hideAll">전체 가리기</button>'+
+        '<span class="hint">가려진 칸을 누르면 답이 나온다. 한 번 더 누르면 그 인물 카드로 간다.</span></div>'+
+        '<div class="list">';
+  TRAPS.forEach(function(t){
+    h+='<div class="trapcard"><h3>⚠️ '+t.t+'</h3><p class="tnote">'+t.note+'</p>';
+    t.rows.forEach(function(r){
+      h+='<div class="qrow"><span class="qq">'+r.q+'</span><span class="ans">'+
+        r.a.map(function(a){
+          return '<button type="button" class="mask'+(a[0]?' nav':'')+'" data-on="0"'+(a[0]?' data-person="'+a[0]+'"':'')+'>'+a[1]+'</button>';
+        }).join('')+'</span><span class="qsrc">'+r.s+'</span></div>';
+    });
+    h+='</div>';
+  });
+  trapEl.innerHTML=h+'</div>';
+  trapEl.addEventListener('click',function(e){
+    var m=e.target.closest('.mask');
+    if(m){
+      if(m.dataset.on==='0'){m.dataset.on='1';return;}
+      var pid=m.getAttribute('data-person');if(pid)navTo(pid);
+      return;
+    }
+    var t=e.target.closest('.tb');if(!t)return;
+    var on=t.id==='showAll'?'1':'0';
+    Array.prototype.forEach.call(trapEl.querySelectorAll('.mask'),function(m2){m2.dataset.on=on;});
+  });
+})();
+
+apply();
+})();
+</script>
